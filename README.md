@@ -6,6 +6,16 @@ This work uncovers a new attack surface to obtain an unauthenticated access of t
 
 - All demos in this research paper are available at https://www.youtube.com/playlist?list=PLDAjgjwZH3zmOoKnDZAg1Jb25UPUEU1Bo
 
+## Attack Process Description
+
+### Pre-attack Preparation:
+
+- Before performing an attack, the attacker collects training data by placing the Raspberry Pi equipped with a USB mini microphone at the position where the attack device would be mounted during deployment (inside the rear bumper cavity), and recording the chime while repeatedly cycling the tailgate. The captured audio is processed in 200 ms frames using a sliding window with a 50 ms hop size, producing 75% overlap between consecutive frames. Each audio segment is converted to a decibel-scale spectrogram via the Short-Time Fourier Transform (STFT). To detect chime activity in each 200 ms chunk, a lightweight convolutional neural network (CNN) is emploied to operate on the input of two-channel spectrogram. The trained detection model will be upload to the Raspberry Pi.
+
+### Attack Execution:
+
+- As shown by the connection and components in 'Design>gadgetsize.pdf', the attacking device will be covertly mounted to the rear bumper cavity or chassis of the vehicle after the victim leaves. Once the victim returns and opens the tailgate, the adversary initiates the attack program, which begins listening passively. When the victim triggers the closing sequence with a kick gesture, the attack device automatically detects the onset of the closing operation through an acoustic side channel, specially the audible chime emitted during liftgate descent. After a calibrated delay, the device emits a spoofed kick event via EMI, halting at a position just short of latch engagement, leaving the vehicle physically unlocked while presenting the appearance of a completed locking interaction. The attacker then gains access to the trunk after the victim departs.
+
 ## Project Structure
 
 This repository is organized into the following directories:
@@ -46,11 +56,7 @@ The LIN BUS directory stores all datasets exported from an Audi Q5 via its LIN b
 -'kick no key' refers to the signal is triggered by an kick motion while vehicle's keyfob is not within the effective range
 -'kick with key' refers to the signal is triggered by an kick motion while vehicle's keyfob is within the effective range
 
-### Demo
 
-The Demo directory contains demonstration videos showing the system in action:
-
-- Various masked videos (`audi_01_mask.mp4`, `audi_02_mask.mp4`, etc.) demonstrating the system's capabilities
 
 ### Module Testing
 The Module Testing directory contains 4 typical sensing modules: two from Brose and two from Huf. Each file contains the whole sensing module and the label printed on the control part.
@@ -60,12 +66,11 @@ The Module Testing directory contains 4 typical sensing modules: two from Brose 
 
 The Paper directory contains research documentation:
 
-- `LiftgateFinal.pdf`: Research paper documenting the methodology and results
+- `Liftgate_CHES.pdf`: Research paper documenting the methodology and results
 
 
 ### Results
-The Results directory contains one demo and test results:
-- `Demo': the demo link of a comlete end-to-end attack scenario
+The Results directory contains the test results:
 - `End-to-End Attack Test Records': the 100 liftgate gap measurements recorded from two parking lots under different ambient noise and wind speed conditions
   
 ## Getting Started
