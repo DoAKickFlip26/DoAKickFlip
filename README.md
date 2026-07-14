@@ -87,17 +87,22 @@ The Results directory contains one demo and test results:
    cd Code
    pip install -r requirements.txt
    ```
-
+  
 2. Run classification:
    ```
-   python classification_new.py
+   python classification_rpi.py
    ```
+
+## For Quick Test of the Classification Model On Audi Q5
+
+   Download the three files in Folder "Detection", and run "classification_rpi.py"
 
 ## Features
 
 - Audio visualization and segmentation with interactive GUI
 - Automated audio clip extraction based on markers
-- CNN-based classification of automotive sounds
+- CNN-based classification of automotive chime sounds
+- Model-driven sound detection
 - Web interface for audio processing
 
 ## Requirements
