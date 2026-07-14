@@ -95,7 +95,7 @@ The Results directory contains one demo and test results:
 
 ## For Quick Test of the Classification Model On Audi Q5
 
-   Download the three files in Folder "Detection", and run "classification_rpi.py"
+- Download the three files in Folder "Detection", and run "classification_rpi.py"
 
 ## Features
 
