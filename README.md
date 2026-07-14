@@ -35,7 +35,7 @@ The Detection directory contains
 - `classification_new.py`: code needed to be download onto the Raspberry Pi to classify the first chime once tailgate starting lowering
 - `model_info_rpi_2ch.pth`: pretrained model information
 - `requirements.txt`: Python dependencies for the the audio classification
-- 
+  
 #### Description
 
 - Contains the description of key steps to conduct the end-to-end attack on the target Audi Q5.
